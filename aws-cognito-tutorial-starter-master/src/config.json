@@ -1,0 +1,10 @@
+{
+  "api": { 
+    "invokeUrl": "https://diq17alyd2.execute-api.us-east-1.amazonaws.com/Prod"
+  },
+  "cognito": {
+    "REGION": "us-east-1",
+    "USER_POOL_ID": "us-east-1_ffYi9cZ5j",
+    "APP_CLIENT_ID": "20huu7uk72vt5j1vn0sclbe285"
+  }
+}
