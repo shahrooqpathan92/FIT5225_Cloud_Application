@@ -10,7 +10,9 @@ export default class GetTags extends Component {
     tag2: "",
     tag3: "",
     tag4: "",
-    tag5: ""
+    tag5: "",
+    photos: [],
+    message: "Enter tags and submit to display images"
   }
 
 
@@ -47,27 +49,73 @@ export default class GetTags extends Component {
     };
 
     axios(options).then(response => {
-      console.log(response)
+      console.log(response.data)
+
+      var responseArray = response.data;
+
+      this.setState({ photos: responseArray })
+      // responseArray.map((x) => {
+      //   console.log("X is"+x)
+      //   return(<img src={x} />)
+      // });
+
+      //Resetting the fields
+      var message = "Displaying images for: ";
+      if (this.state.tag1 != null) {
+        message = message + this.state.tag1 +" "
+      }
+      if (this.state.tag2 != null) {
+        message = message + this.state.tag2 +" "
+      }
+      if (this.state.tag3 != null) {
+        message = message + this.state.tag3 +" "
+      }
+      if (this.state.tag4 != null) {
+        message = message + this.state.tag4 +" "
+      }
+      if (this.state.tag5 != null) {
+        message = message + this.state.tag5 +" "
+      }
+      this.setState({ message: message })
+      this.setTag1("")
+      this.setTag2("")
+      this.setTag3("")
+      this.setTag4("")
+      this.setTag5("")
+
     });
+
+
   }
 
+  //Setting the state of tag1
   setTag1(tag) {
     return this.setState({ tag1: tag })
   }
 
+  //Setting the state of tag2
   setTag2(tag) {
     return this.setState({ tag2: tag })
   }
+
+  //Setting the state of tag3
   setTag3(tag) {
     return this.setState({ tag3: tag })
   }
+
+  //Setting the state of tag4
   setTag4(tag) {
     return this.setState({ tag4: tag })
   }
+
+  //Setting the state of tag5
   setTag5(tag) {
     return this.setState({ tag5: tag })
   }
 
+  // displayPhotos(){
+  //   return React.createElement(() => <p>This is where the images will be displayed</p>);
+  // }
 
   componentDidMount = () => {
     this.fetchimages();
@@ -93,6 +141,7 @@ export default class GetTags extends Component {
 
                     <div className="field has-addons">
                       <div className="control">
+                        <label> Tag 1</label>
                         <input
                           className="input is-medium"
                           type="text"
@@ -102,6 +151,7 @@ export default class GetTags extends Component {
                         />
                       </div>
                       <div className="control">
+                        <label> Tag 2</label>
                         <input
                           className="input is-medium"
                           type="text"
@@ -111,6 +161,7 @@ export default class GetTags extends Component {
                         />
                       </div>
                       <div className="control">
+                        <label> Tag 3</label>
                         <input
                           className="input is-medium"
                           type="text"
@@ -120,6 +171,7 @@ export default class GetTags extends Component {
                         />
                       </div>
                       <div className="control">
+                        <label> Tag 4</label>
                         <input
                           className="input is-medium"
                           type="text"
@@ -129,6 +181,7 @@ export default class GetTags extends Component {
                         />
                       </div>
                       <div className="control">
+                        <label> Tag 5</label>
                         <input
                           className="input is-medium"
                           type="text"
@@ -137,11 +190,11 @@ export default class GetTags extends Component {
                           onChange={(e) => this.setTag5(e.target.value)}
                         />
                       </div>
-                      <div className="control">
+                      {/* <div className="control">
                         <button type="submit" className="button is-light is-medium">
                           Add tags
                       </button>
-                      </div>
+                      </div> */}
                     </div>
 
                   </div>
@@ -168,8 +221,23 @@ export default class GetTags extends Component {
           </div>
 
 
-          <input type="submit" value="Get Images" class="button is-dark" onClick={this.getImagesFromTags.bind(this)} />
+          <input type="submit" value="Get Images" class="button is-dark" onClick={this.getImagesFromTags.bind(this)} style={{ marginTop: "2em", marginLeft: "4em" }} />
+
+          <div>
+            <h1 style={{ margin: "2em" }}>{this.state.message}</h1>
+
+            {
+
+              this.state.photos.map((item, i) => {
+
+                return <img src={this.state.photos[i]} style={{ height: "300px", width: "auto", margin: "2em" }} />
+              })
+            }
+
+          </div>
+          {/* {this.displayPhotos.bind(this)} */}
         </section>
+
       </Fragment>
     )
   }
