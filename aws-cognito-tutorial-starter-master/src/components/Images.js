@@ -8,6 +8,7 @@ export default class Images extends Component {
   //base64ToUpload = "";
   state = {
     newproduct: null,
+    images: []
     images: [],
     imageToUpload: "ABCDEFG"
   }
