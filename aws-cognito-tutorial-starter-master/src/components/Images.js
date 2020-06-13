@@ -27,13 +27,6 @@ export default class Images extends Component {
     return this.setState({ imageToUpload: imagetoupload })
   }
 
-  fetchimages = async () => {
-    // add call to AWS API Gateway to fetch images here
-    // then set them in state
-    //export default class Images extends Component {
-    this.fetchimages();
-  }
-
   //function to encode the image file to url
   encodeImageFileAsURL() {
     var base64ToUpload = "";
@@ -67,15 +60,6 @@ export default class Images extends Component {
   uploadToS3() {
     console.log('HI')
     var data = '{"to_upload_image": "' + this.state.imageToUpload + '"}'
-    //   $.ajax({
-    //     url: 'https://diq17alyd2.execute-api.us-east-1.amazonaws.com/Prod/image-upload-to-s3',
-    //     method: 'POST',
-    //     dataType: 'text', //You can also define this as Json
-    //     data: data,
-    //     success: function (response) { console.log(response); },
-    //     error: function (error) { console.log(error); }
-    //   });
-    // }
 
     var options = {
       method: 'post',
@@ -94,7 +78,7 @@ export default class Images extends Component {
 
     axios(options).then(response => {
       console.log(response.headers)
-      var message = "Upload successful!";
+      var message = "Upload successfully at: "+ response.data.Location;
       console.log(response.data)
       console.log(response.data.Location);
       this.setState({ response: response.data.Location })
@@ -104,16 +88,9 @@ export default class Images extends Component {
       document.getElementById("inputFileToLoad").value = "";
       
     }).then(console.log).catch(console.log);
-    
-
-    
   
 
   }
-
-  // setImageToUploadProp = (imageBase64Code) => {
-  //   this.setState({ imageToUpload: imageBase64Code });
-  // }
 
   render() {
 
@@ -139,7 +116,7 @@ export default class Images extends Component {
             <div id="imgTest"></div>
             <input type="submit" value="Upload" class="button is-dark" onClick={this.uploadToS3.bind(this)} />
             <div>
-            <h1 style={{color:"green"}}>{this.state.message}</h1>
+            <h2 style={{color:"green"}}>{this.state.message}</h2>
             </div>
           </div>
           )}

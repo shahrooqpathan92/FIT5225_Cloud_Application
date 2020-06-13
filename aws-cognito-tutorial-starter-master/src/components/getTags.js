@@ -16,19 +16,6 @@ export default class GetTags extends Component {
   }
 
 
-
-  fetchimages = async () => {
-    // add call to AWS API Gateway to fetch images here
-    // then set them in state
-    try {
-      const res = await axios.get(`${config.api.invokeUrl}/images`);
-      const images = res.data;
-      this.setState({ images: images });
-    } catch (err) {
-      console.log(`An error has occurred: ${err}`);
-    }
-  }
-
   getImagesFromTags() {
     var tag1 = this.state.tag1;
     var tag2 = this.state.tag2;
@@ -55,10 +42,6 @@ export default class GetTags extends Component {
       var responseArray = response.data;
 
       this.setState({ photos: responseArray })
-      // responseArray.map((x) => {
-      //   console.log("X is"+x)
-      //   return(<img src={x} />)
-      // });
 
       //Resetting the fields
       var message = "Displaying images for: ";
@@ -118,9 +101,6 @@ export default class GetTags extends Component {
   //   return React.createElement(() => <p>This is where the images will be displayed</p>);
   // }
 
-  componentDidMount = () => {
-    this.fetchimages();
-  }
 
   render() {
     return (
