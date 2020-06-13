@@ -14,15 +14,15 @@ export default class Navbar extends Component {
   }
   render() {
     return (
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <a className="navbar-item" href="/">
-           
+          { <img src={require('./logo.png')} width="75" height="10" style={{maxHeight:"none"}}></img> }
           </a>
         </div>
 
-        <div id="navbarBasicExample" className="navbar-menu">
-          <div className="navbar-start">
+        <div id="navbarBasicExample" className="navbar-menu is-info">
+          <div className="navbar-start is-info" style={{marginTop:"1rem"}}>
             <a href="/" className="navbar-item">
               Home
             </a>
@@ -35,9 +35,9 @@ export default class Navbar extends Component {
           </div>
 
           <div className="navbar-end">
-            <div className="navbar-item">
+            <div className="navbar-item" style={{marginTop:"1rem"}}>
               {this.props.auth.isAuthenticated && this.props.auth.user && (
-                <p>Logged in as: {this.props.auth.user.username}</p>
+                <p >Logged in as: {this.props.auth.user.username}</p>
               )}
               <div className="buttons">
                 {!this.props.auth.isAuthenticated && (
@@ -45,13 +45,13 @@ export default class Navbar extends Component {
                   <a href="/register" className="button is-light">
                   Register
                 </a>
-                <a href="/login" className="button is-light">
+                <a href="/login" className="button is-primary">
                   Log in
                 </a>
                 </div>
                 )}
                 {this.props.auth.isAuthenticated && (
-                <a href="/" onClick={this.handleLogOut} className="button is-light">
+                <a href="/" onClick={this.handleLogOut} className="button is-danger">
                   Log out
                 </a>
                 )}

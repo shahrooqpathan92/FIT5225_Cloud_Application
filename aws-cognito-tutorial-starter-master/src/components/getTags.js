@@ -62,19 +62,19 @@ export default class GetTags extends Component {
       //Resetting the fields
       var message = "Displaying images for: ";
       if (this.state.tag1 != null) {
-        message = message + this.state.tag1 +" "
+        message = message + this.state.tag1 + " "
       }
       if (this.state.tag2 != null) {
-        message = message + this.state.tag2 +" "
+        message = message + this.state.tag2 + " "
       }
       if (this.state.tag3 != null) {
-        message = message + this.state.tag3 +" "
+        message = message + this.state.tag3 + " "
       }
       if (this.state.tag4 != null) {
-        message = message + this.state.tag4 +" "
+        message = message + this.state.tag4 + " "
       }
       if (this.state.tag5 != null) {
-        message = message + this.state.tag5 +" "
+        message = message + this.state.tag5 + " "
       }
       this.setState({ message: message })
       this.setTag1("")
@@ -127,9 +127,11 @@ export default class GetTags extends Component {
         <section className="section">
           <div className="container">
             {!this.props.auth.isAuthenticated && (
-              <div>
-                <p>Please log in to search for tags</p>
+              <article class="message is-danger">
+                <div class="message-body">
+                  Please log in to search for tags.
               </div>
+              </article>
             )}
             {this.props.auth.isAuthenticated && this.props.auth.user && (
               <div>
@@ -190,52 +192,30 @@ export default class GetTags extends Component {
                           onChange={(e) => this.setTag5(e.target.value)}
                         />
                       </div>
-                      {/* <div className="control">
-                        <button type="submit" className="button is-light is-medium">
-                          Add tags
-                      </button>
-                      </div> */}
                     </div>
+                    <input type="submit" value="Get Images" class="button is-dark" onClick={this.getImagesFromTags.bind(this)} style={{ marginTop: "2em"}} />
 
-                  </div>
-                  <div className="column is-two-thirds">
-                    <div className="tile is-ancestor">
-                      <div className="tile is-4 is-parent  is-vertical">
-                        {/* { 
-                      this.state.images.map((product, index) => 
-                        <Product 
-                          isAdmin={true}
-                          handleUpdateProduct={this.handleUpdateProduct}
-                          handleDeleteProduct={this.handleDeleteProduct} 
-                          name={product.productname} 
-                          id={product.id}
-                          key={product.id}
-                        />)
-                    } */}
-                      </div>
+                    <div>
+                      <h2 style={{ margin: "1em" }}>{this.state.message}</h2>
+                      {
+                        this.state.photos.map((item, i) => {
+
+                          return <img src={this.state.photos[i]} style={{ height: "300px", width: "auto", margin: "2em" }} />
+                        })
+                      }
+
                     </div>
                   </div>
+
+
+                  {/* {this.displayPhotos.bind(this)} */}
                 </div>
               </div>
             )}
           </div>
 
 
-          <input type="submit" value="Get Images" class="button is-dark" onClick={this.getImagesFromTags.bind(this)} style={{ marginTop: "2em", marginLeft: "4em" }} />
 
-          <div>
-            <h1 style={{ margin: "2em" }}>{this.state.message}</h1>
-
-            {
-
-              this.state.photos.map((item, i) => {
-
-                return <img src={this.state.photos[i]} style={{ height: "300px", width: "auto", margin: "2em" }} />
-              })
-            }
-
-          </div>
-          {/* {this.displayPhotos.bind(this)} */}
         </section>
 
       </Fragment>

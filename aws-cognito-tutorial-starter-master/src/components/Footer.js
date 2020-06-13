@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="content has-text-centered">
         <p>
-          Made for: Monash 
+          Made for: Monash FIT5225 Assignment 2
         </p>
       </div>
     </footer>

@@ -4,7 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Images from './components/Images';
-import GetTags from './components/GetTags';
+import GetTags from './components/getTags';
 import LogIn from './components/auth/LogIn';
 import Register from './components/auth/Register';
 import Welcome from './components/auth/Welcome';

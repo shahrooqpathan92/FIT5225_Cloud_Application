@@ -69,7 +69,7 @@ class LogIn extends Component {
                   type="text"
                   id="username"
                   aria-describedby="usernameHelp"
-                  placeholder="Enter username or email"
+                  placeholder="Enter username"
                   value={this.state.username}
                   onChange={this.onInputChange}
                 />

@@ -2,21 +2,31 @@ import React, { Component, Fragment } from 'react';
 import Product from './Product';
 import axios from "axios";
 const config = require('../config.json');
+const initialState = {};
 
 export default class Images extends Component {
 
   //base64ToUpload = "";
   state = {
-    newproduct: null,
     images: [],
     imageToUpload: "",
-    response: ""
+    response: "",
+    message: ""
   }
 
   constructor(props) {
     super(props);
     this.testVarible = "this is a test";
   }
+
+  setImages(images) {
+    return this.setState({ images: images })
+  }
+
+  setImageToUpload(imagetoupload) {
+    return this.setState({ imageToUpload: imagetoupload })
+  }
+
   fetchimages = async () => {
     // add call to AWS API Gateway to fetch images here
     // then set them in state
@@ -77,19 +87,20 @@ export default class Images extends Component {
         return data;
       }]
     };
-
+    
     axios(options).then(response => {
+      var message = "Upload successful!";
       console.log(response.data)
       console.log(response.data.Location);
       this.setState({ response: response.data.Location })
+      this.setState({ message: message })
+      this.setImages("");
+      document.getElementById("imgTest").innerHTML = "";
+      document.getElementById("inputFileToLoad").value = "";
     });
+    
+
   }
-
-
-
-
-
-
 
   // setImageToUploadProp = (imageBase64Code) => {
   //   this.setState({ imageToUpload: imageBase64Code });
@@ -103,9 +114,11 @@ export default class Images extends Component {
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <div className="container">
           {!this.props.auth.isAuthenticated && (
-                  <div>
-                    <p>Please log in to upload image</p>
-                  </div>
+              <article class="message is-danger">
+                <div class="message-body">
+                  Please log in to upload image.
+                </div>
+              </article>
           )}
           {this.props.auth.isAuthenticated && this.props.auth.user && (
             <div>
@@ -116,14 +129,16 @@ export default class Images extends Component {
             <input id="inputFileToLoad" type="file" class="button is-light" onChange={this.encodeImageFileAsURL.bind(this)} />
             <div id="imgTest"></div>
             <input type="submit" value="Upload" class="button is-dark" onClick={this.uploadToS3.bind(this)} />
+            <div>
+            <h1 style={{color:"green"}}>{this.state.message}</h1>
+            </div>
           </div>
           )}
+
           
           </div>
 
           <script type='text/javascript'>
-            //paste upload image function here
-          //paste upload image function here
           </script>
         </section>
       </Fragment>

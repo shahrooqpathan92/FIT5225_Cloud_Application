@@ -7,6 +7,7 @@ export default function Home() {
     
     <Fragment>
       <Hero></Hero>
+      <HomeContent />
       <div className="box cta">
         <p className="has-text-centered">
         </p>

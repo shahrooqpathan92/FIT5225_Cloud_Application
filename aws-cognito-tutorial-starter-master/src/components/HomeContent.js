@@ -8,9 +8,8 @@ export default function HomeContent() {
                 <div className="card is-shady">
                     <div className="card-content">
                         <div className="content">
-                            <h4>images</h4>
-                            <p>images are good</p>
-                            <p><a href="/">Learn more</a></p>
+                            <h4>Step 1.</h4>
+                            <p>Register/Log in to TagStore.</p>
                         </div>
                     </div>
                 </div>
@@ -19,9 +18,8 @@ export default function HomeContent() {
                 <div className="card is-shady">
                     <div className="card-content">
                         <div className="content">
-                            <h4>Try to upload</h4>
-                            <p>Importance</p>
-                            <p><a href="/">Learn more</a></p>
+                            <h4>Step 2.</h4>
+                            <p>Upload your images.</p>
                         </div>
                     </div>
                 </div>
@@ -30,9 +28,8 @@ export default function HomeContent() {
                 <div className="card is-shady">
                      <div className="card-content">
                         <div className="content">
-                            <h4>Hoho</h4>
-                            <p>For the assignment</p>
-                            <p><a href="/">Learn more</a></p>
+                            <h4>Step 3.</h4>
+                            <p>Retrieve images based on tags.</p>
                         </div>
                     </div>
                 </div>
