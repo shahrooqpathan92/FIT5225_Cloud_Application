@@ -31,12 +31,15 @@ export default class Images extends Component {
       <Fragment>
         <section className="section">
           <div className="container">
+          {this.props.auth.isAuthenticated && this.props.auth.user && (
+            <div>
             <h1>Image Upload</h1>
             <p className="subtitle is-5">Upload images:</p>
             <br />
             <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
            <div id="imgTest"></div> 
-        
+           </div>
+          )}
           </div>
           <script type='text/javascript'>
             //paste upload image function here
