@@ -85,6 +85,13 @@ export default class GetTags extends Component {
       <Fragment>
         <section className="section">
           <div className="container">
+          {!this.props.auth.isAuthenticated && (
+                  <div>
+                    <p>Please log in to search for tags</p>
+                  </div>
+          )}
+          {this.props.auth.isAuthenticated && this.props.auth.user && (
+            <div>
             <h1>Get Tags</h1>
             <p className="subtitle is-5">Add tags you want to find below:</p>
             <br />
@@ -136,6 +143,8 @@ export default class GetTags extends Component {
                 </div>
               </div>
             </div>
+            </div>
+            )}
           </div>
         </section>
       </Fragment>
