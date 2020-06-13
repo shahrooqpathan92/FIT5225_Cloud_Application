@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="hero is-light">
       <div className="hero-body">
         <div className="container">
-          <img src="picture.jpg" alt="TagStore" />
+          <img src="picture.jpg" alt="TagStore"  />
         </div>
       </div>
     </section>

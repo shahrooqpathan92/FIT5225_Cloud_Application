@@ -11,7 +11,6 @@ export default function Home() {
         <p className="has-text-centered">
         </p>
       </div>
-      <HomeContent />
     </Fragment>
   )
 }
