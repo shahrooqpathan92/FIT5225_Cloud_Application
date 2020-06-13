@@ -3,7 +3,7 @@ import Product from './Product';
 import axios from "axios";
 const config = require('../config.json');
 
-export default class getTags extends Component {
+export default class GetTags extends Component {
 
   state = {
     newproduct: { 

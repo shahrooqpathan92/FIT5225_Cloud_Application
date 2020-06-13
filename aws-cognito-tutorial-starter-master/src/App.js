@@ -4,7 +4,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Images from './components/Images';
-import getTags from './components/getTags';
+import GetTags from './components/GetTags';
 import LogIn from './components/auth/LogIn';
 import Register from './components/auth/Register';
 import Welcome from './components/auth/Welcome';
@@ -66,7 +66,7 @@ class App extends Component {
             <Switch>
               <Route exact path="/" render={(props)=> <Home {...props} auth = {authenticationProps} />} />
               <Route exact path="/Images" render={(props)=> <Images {...props} auth = {authenticationProps} />} />
-              <Route exact path="/getTags" render={(props)=> <getTags {...props} auth = {authenticationProps} />} />
+              <Route exact path="/GetTags" render={(props)=> <GetTags {...props} auth = {authenticationProps} />} />
               <Route exact path="/login" render={(props)=> <LogIn {...props} auth = {authenticationProps} />} />
               <Route exact path="/register" render={(props)=> <Register {...props} auth = {authenticationProps} />} />
               <Route exact path="/welcome" render={(props)=> <Welcome {...props} auth = {authenticationProps} />} />

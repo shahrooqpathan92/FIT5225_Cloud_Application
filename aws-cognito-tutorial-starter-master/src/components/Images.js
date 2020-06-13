@@ -100,6 +100,13 @@ export default class Images extends Component {
         <section className="section">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
           <div className="container">
+          {!this.props.auth.isAuthenticated && (
+                  <div>
+                    <p>Please log in to upload image</p>
+                  </div>
+          )}
+          {this.props.auth.isAuthenticated && this.props.auth.user && (
+            <div>
             <h1>Image Upload</h1>
             <p className="subtitle is-5">Upload images:</p>
             <br />
@@ -107,6 +114,9 @@ export default class Images extends Component {
             <input id="inputFileToLoad" type="file" class="button is-light" onChange={this.encodeImageFileAsURL.bind(this)} />
             <div id="imgTest"></div>
             <input type="submit" value="Upload" class="button is-dark" onClick={this.uploadToS3.bind(this)} />
+          </div>
+          )}
+          
           </div>
 
           <script type='text/javascript'>
