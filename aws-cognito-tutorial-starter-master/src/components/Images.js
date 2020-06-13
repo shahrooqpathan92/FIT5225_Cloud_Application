@@ -9,7 +9,8 @@ export default class Images extends Component {
   state = {
     newproduct: null,
     images: [],
-    imageToUpload: "ABCDEFG"
+    imageToUpload: "",
+    response: ""
   }
 
   constructor(props) {
@@ -80,6 +81,7 @@ export default class Images extends Component {
     axios(options).then(response => {
       console.log(response.data)
       console.log(response.data.Location);
+      this.setState({ response: response.data.Location })
     });
   }
 
