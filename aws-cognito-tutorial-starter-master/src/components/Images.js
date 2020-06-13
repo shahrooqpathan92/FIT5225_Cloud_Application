@@ -8,7 +8,6 @@ export default class Images extends Component {
   //base64ToUpload = "";
   state = {
     newproduct: null,
-    images: []
     images: [],
     imageToUpload: "ABCDEFG"
   }
@@ -20,7 +19,7 @@ export default class Images extends Component {
   fetchimages = async () => {
     // add call to AWS API Gateway to fetch images here
     // then set them in state
-@@ -26,24 +31,97 @@ export default class Images extends Component {
+    //export default class Images extends Component {
     this.fetchimages();
   }
 
@@ -104,8 +103,6 @@ export default class Images extends Component {
             <h1>Image Upload</h1>
             <p className="subtitle is-5">Upload images:</p>
             <br />
-            <input id="inputFileToLoad" type="file" onchange="encodeImageFileAsURL();" />
-           <div id="imgTest"></div>
 
             <input id="inputFileToLoad" type="file" class="button is-light" onChange={this.encodeImageFileAsURL.bind(this)} />
             <div id="imgTest"></div>
