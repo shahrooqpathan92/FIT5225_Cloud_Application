@@ -39,13 +39,14 @@ export default class GetTags extends Component {
     console.log("url: " + url)
     var options = {
       method: 'get',
-      url: url
+      url: url,
+      headers: { Authorization: `Bearer ${this.props.auth.accesstoken}` },
       //data: data,
-      // transformRequest: [(data, headers) => {
+      transformRequest: [(data, headers) => {
       //   // transform the data
 
-      //   return data;
-      // }]
+        return data;
+       }]
     };
 
     axios(options).then(response => {

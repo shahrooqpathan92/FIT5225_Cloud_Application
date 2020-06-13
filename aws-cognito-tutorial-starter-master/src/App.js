@@ -21,7 +21,8 @@ class App extends Component {
   state = {
     isAuthenticated: false,
     isAuthenticating: true,
-    user: null
+    user: null,
+    accesstoken: null
   }
   //helper function to check if the user is authenticated, and set user object
 
@@ -33,6 +34,11 @@ class App extends Component {
     this.setState({ user: user});
   }
 
+  setAccessToken = accesstoken => { 
+    this.setState({ accesstoken: accesstoken })
+  }
+
+
   async componentDidMount(){
     //placeholder variable for session, refresh tokens automatically
     try{
@@ -40,7 +46,10 @@ class App extends Component {
       this.setAuthenticationStatus(true);
       console.log(session);
       const user = await Auth.currentAuthenticatedUser();
-      this.setUser(user)
+      this.setUser(user);
+      const accesstoken = session.idToken.jwtToken;
+      console.log("Access Token:" + accesstoken)
+      this.setAccessToken(accesstoken);
     }catch(error){
       console.log(error);
     }
@@ -54,8 +63,11 @@ class App extends Component {
     const authenticationProps = {
       isAuthenticated: this.state.isAuthenticated,
       user: this.state.user,
+      accesstoken: this.state.accesstoken,
       setAuthenticationStatus: this.setAuthenticationStatus,
-      setUser: this.setUser
+      setUser: this.setUser,
+      setAccessToken: this.setAccessToken
+   
     }
     return (
       !this.state.isAuthenticating && 

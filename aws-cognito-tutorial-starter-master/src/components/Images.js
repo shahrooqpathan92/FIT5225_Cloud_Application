@@ -57,8 +57,8 @@ export default class Images extends Component {
         //this.setImageToUploadProp(base64ToUpload);
       }.bind(this)
       fileReader.readAsDataURL(fileToLoad);
-      console.log(base64ToUpload)
-
+      //console.log(base64ToUpload)
+      console.log(this.props.auth.accesstoken)
     }
 
 
@@ -79,8 +79,9 @@ export default class Images extends Component {
 
     var options = {
       method: 'post',
-      url: 'https://diq17alyd2.execute-api.us-east-1.amazonaws.com/Prod/image-upload-to-s3',
+      url: 'https://u3oaen5c35.execute-api.us-east-1.amazonaws.com/prod/upload-to-s3',
       data: data,
+      headers: { Authorization: `Bearer ${this.props.auth.accesstoken}` },
       transformRequest: [(data, headers) => {
         // transform the data
 
@@ -88,7 +89,11 @@ export default class Images extends Component {
       }]
     };
     
+    console.log(options.headers)
+
+
     axios(options).then(response => {
+      console.log(response.headers)
       var message = "Upload successful!";
       console.log(response.data)
       console.log(response.data.Location);
@@ -97,8 +102,12 @@ export default class Images extends Component {
       this.setImages("");
       document.getElementById("imgTest").innerHTML = "";
       document.getElementById("inputFileToLoad").value = "";
-    });
+      
+    }).then(console.log).catch(console.log);
     
+
+    
+  
 
   }
 
